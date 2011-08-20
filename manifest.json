@@ -1,7 +1,7 @@
 {
   "name": "はてなブックマーク/見たくないリンク",
-  "version": "0.2",
-  "description": "指定したリンクが、はてなブックマーク (http://b.hatena.ne.jp/) 内に存在する場合、小さく薄く表示します。",
+  "version": "0.3",
+  "description": "指定したリンクが、はてなブックマーク (http://b.hatena.ne.jp/) 内に存在する場合、非表示にしあり、小さく薄く表示したりします。",
   "background_page": "background.html",
   "options_page" : "options.html",
   "icons": {
@@ -17,5 +17,6 @@
       "css": [ "contentscript.css" ],
       "js": [ "jquery-1.5.min.js", "contentscript.js" ]
     }
-  ]
+  ],
+  "permissions": [ "http://wedata.net/*" ]
 }

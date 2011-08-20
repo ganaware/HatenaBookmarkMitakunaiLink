@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<script type="text/javascript" src="options.js"></script>
 <title>オプション</title>
 <style>
 body {
@@ -32,37 +33,6 @@ body {
 	padding: 1em;
 }
 </style>
-<script>
-function show_message(text) {
-  var status = document.getElementById("status");
-  status.innerHTML = text;
-  setTimeout(function() { status.innerText = ""; }, 750);
-}
-
-function save_options() {
-  var patterns = document.getElementById("patterns");
-  localStorage["patterns"] = patterns.value;
-  var looks = document.getElementById("looks");
-  localStorage["looks"] = looks.value;
-  show_message("保存しました。");
-}
-
-function insert_defaults() {
-  var patterns = document.getElementById("patterns");
-  patterns.value = patterns.value + "\n" + localStorage["defaults"];
-  show_message("拡張のデフォルト設定を挿入しました(保存はしていません)。");
-}
-
-function restore_options() {
-  var patterns_value = localStorage["patterns"];
-  if (patterns_value) {
-    var patterns = document.getElementById("patterns");
-    patterns.value = patterns_value;
-  }
-  var looks = document.getElementById("looks");
-  looks.value = localStorage["looks"];
-}
-</script>
 </head>
 <body onload="restore_options()">
 <div id="header">
@@ -78,7 +48,7 @@ function restore_options() {
     </select>
     表示するリンクを、正規表現を使用して改行で区切って記述してください。</div>
   <textarea id="patterns" cols="60" rows="15" spellcheck="false"></textarea>
-  <div><button onclick="insert_defaults()">拡張のデフォルト設定を挿入する</button></div>
+  <div><input type="checkbox" id="use-default" />Wedataから<a href="http://wedata.net/databases/HatenaBookmarkMitakunaiLinkDefault/items">拡張のデフォルト設定</a>を定期的に読み込む <button onclick="refresh()">今すぐ再読み込み</button></div>
 </div>
 <div class="save">
 <button onclick="save_options()">保存</button>
