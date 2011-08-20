@@ -1,0 +1,21 @@
+{
+  "name": "はてなブックマーク/見たくないリンク",
+  "version": "0.1",
+  "description": "指定したリンクが、はてなブックマーク (http://b.hatena.ne.jp/) 内に存在する場合、小さく薄く表示します。",
+  "background_page": "background.html",
+  "options_page" : "options.html",
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "64": "icon64.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [ "http://b.hatena.ne.jp/*" ],
+      "css": [ "contentscript.css" ],
+      "js": [ "jquery-1.5.min.js", "contentscript.js" ]
+    }
+  ]
+}

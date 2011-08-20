@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>オプション</title>
+<style>
+body {
+	font-family: sans-serif;
+	font-size: small;
+	margin: 1em;
+}
+#header h1 {
+	font-size: 20px;
+	font-weight: bold;
+	min-height: 64px;
+	padding: 16px 0 0 75px;
+	background: url("icon64.png") no-repeat;
+	margin: 0;
+}
+.section-header {
+	background: #ebeff9;
+	border-top: 1px solid #b5c7de;
+	padding: .2em 0 .2em .5em;
+	font-size: 99%;
+	font-weight: bold;
+}
+.content {
+	border-bottom: 1px solid #cdcdcd;
+	padding: 1em;
+}
+.save {
+	padding: 1em;
+}
+</style>
+<script>
+function show_message(text) {
+  var status = document.getElementById("status");
+  status.innerHTML = text;
+  setTimeout(function() { status.innerText = ""; }, 750);
+}
+
+function save_options() {
+  var patterns = document.getElementById("patterns");
+  localStorage["patterns"] = patterns.value;
+  show_message("保存しました。");
+}
+
+function insert_defaults() {
+  var patterns = document.getElementById("patterns");
+  patterns.value = patterns.value + "\n" + localStorage["defaults"];
+  show_message("拡張のデフォルト設定を挿入しました(保存はしていません)。");
+}
+
+function restore_options() {
+  var patterns_value = localStorage["patterns"];
+  if (patterns_value) {
+    var patterns = document.getElementById("patterns");
+    patterns.value = patterns_value;
+  }
+}
+</script>
+</head>
+<body onload="restore_options()">
+<div id="header">
+  <h1>はてなブックマーク/見たくないリンク</h1>
+</div>
+<div class="section-header">オプション</div>
+<div class="content">
+  <div>はてなブックマーク (<a href="http://b.hatena.ne.jp/">http://b.hatena.ne.jp/</a>) 内で小さく薄く表示するリンクを、正規表現を使用して改行で区切って記述してください。</div>
+  <textarea id="patterns" cols="60" rows="15" spellcheck="false"></textarea>
+  <div><button onclick="insert_defaults()">拡張のデフォルト設定を挿入する</button></div>
+</div>
+<div class="save">
+<button onclick="save_options()">保存</button>
+<div id="status"></div>
+</div>
+</body>
+</html>

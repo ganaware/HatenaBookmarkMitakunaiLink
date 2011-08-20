@@ -1,0 +1,26 @@
+<script>
+localStorage['defaults'] =
+	"http://blog.livedoor.jp/geek/.*\n" +
+	"http://blog.livedoor.jp/himasoku123/.*\n" +
+	"http://blog.livedoor.jp/samplems-bakufu/.*\n" +
+	"http://blog.livedoor.jp/t_okz/.*\n" +
+	"http://hankaku.2chblog.jp/.*\n" +
+	"http://hot-kuma-vip.net/.*\n" +
+	"http://minkch.com/.*\n" +
+	"http://stalker.livedoor.biz/.*\n" +
+	"http://vippers.jp/.*\n" +
+	"";
+if (!localStorage['patterns']) {
+	localStorage['patterns'] = localStorage['defaults'];
+}
+
+chrome.extension.onRequest.addListener(
+	function(request, sender, sendResponse) {
+		switch (request) {
+		case 'getPatterns':
+			sendResponse(localStorage['patterns']);
+			break;
+		}
+	}
+);
+</script>
