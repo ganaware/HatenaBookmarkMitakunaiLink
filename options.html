@@ -42,6 +42,8 @@ function show_message(text) {
 function save_options() {
   var patterns = document.getElementById("patterns");
   localStorage["patterns"] = patterns.value;
+  var looks = document.getElementById("looks");
+  localStorage["looks"] = looks.value;
   show_message("保存しました。");
 }
 
@@ -57,6 +59,8 @@ function restore_options() {
     var patterns = document.getElementById("patterns");
     patterns.value = patterns_value;
   }
+  var looks = document.getElementById("looks");
+  looks.value = localStorage["looks"];
 }
 </script>
 </head>
@@ -66,7 +70,13 @@ function restore_options() {
 </div>
 <div class="section-header">オプション</div>
 <div class="content">
-  <div>はてなブックマーク (<a href="http://b.hatena.ne.jp/">http://b.hatena.ne.jp/</a>) 内で小さく薄く表示するリンクを、正規表現を使用して改行で区切って記述してください。</div>
+  <div>
+    はてなブックマーク (<a href="http://b.hatena.ne.jp/">http://b.hatena.ne.jp/</a>) 内で
+    <select id="looks">
+      <option value="translucent">小さく薄く</option>
+      <option value="hidden">隠して</option>
+    </select>
+    表示するリンクを、正規表現を使用して改行で区切って記述してください。</div>
   <textarea id="patterns" cols="60" rows="15" spellcheck="false"></textarea>
   <div><button onclick="insert_defaults()">拡張のデフォルト設定を挿入する</button></div>
 </div>

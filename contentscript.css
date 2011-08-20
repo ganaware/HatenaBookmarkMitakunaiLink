@@ -1,4 +1,7 @@
-.ignore {
+.translucent {
     font-size: xx-small;
     opacity: 0.5;
+}
+.hidden {
+    display: none;
 }

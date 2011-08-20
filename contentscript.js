@@ -1,6 +1,6 @@
-chrome.extension.sendRequest('getPatterns', function(response) {
+chrome.extension.sendRequest('getData', function(response) {
 	var ignores = [];
-	response.split("\n").forEach(function(ignore){
+	response.patterns.split("\n").forEach(function(ignore){
 		if (!ignore.match("^\s*$")) {
 			ignores.push(ignore);
 		}
@@ -11,7 +11,7 @@ chrome.extension.sendRequest('getPatterns', function(response) {
 		var node = nodesSnapshot.snapshotItem(i);
 		ignores.forEach(function(ignore){
 			if (node.href.match(ignore)) {
-				$(node.parentNode.parentNode).addClass('ignore');
+				$(node.parentNode.parentNode).addClass(response.looks);
 			}
 		});
 	}

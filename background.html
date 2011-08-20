@@ -2,23 +2,50 @@
 localStorage['defaults'] =
 	"http://blog.livedoor.jp/geek/.*\n" +
 	"http://blog.livedoor.jp/himasoku123/.*\n" +
+	"http://blog.livedoor.jp/insidears/.*\n" +
+	"http://blog.livedoor.jp/kinisoku/.*\n" +
+	"http://blog.livedoor.jp/pfch/.*\n" +
+	"http://blog.livedoor.jp/pururungazou/.*\n" +
 	"http://blog.livedoor.jp/samplems-bakufu/.*\n" +
 	"http://blog.livedoor.jp/t_okz/.*\n" +
+	"\n" +
+	"http://eromoem.blog135.fc2.com/.*\n" +
+	"http://hira223.blog37.fc2.com/.*\n" +
+	"http://hunterdouga.blog94.fc2.com/.*\n" +
+	"http://nukeruga.blog31.fc2.com/.*\n" +
+	"http://okkisokuho.blog107.fc2.com/.*\n" +
+	"http://onch.blog88.fc2.com/.*\n" +
+	"http://photomovie.blog92.fc2.com/.*\n" +
+	"http://sanzierogazo.blog129.fc2.com/.*\n" +
+	"http://seiroganmania.blog62.fc2.com/.*\n" +
+	"http://zipdeyaruo.blog42.fc2.com/.*\n" +
+	"\n" +
 	"http://hankaku.2chblog.jp/.*\n" +
+	"http://kuromacyo-zip.2chblog.jp/.*\n" +
+	"\n" +
+	"http://d2ch.dtiblog.com/.*\n" +
 	"http://hot-kuma-vip.net/.*\n" +
+	"http://korewa-eroi.com/.*\n" +
 	"http://minkch.com/.*\n" +
+	"http://nijisaku.com/.*\n" +
 	"http://stalker.livedoor.biz/.*\n" +
 	"http://vippers.jp/.*\n" +
 	"";
 if (!localStorage['patterns']) {
 	localStorage['patterns'] = localStorage['defaults'];
 }
+if (!localStorage['looks']) {
+	localStorage['looks'] = 'hidden';
+}
 
 chrome.extension.onRequest.addListener(
 	function(request, sender, sendResponse) {
 		switch (request) {
-		case 'getPatterns':
-			sendResponse(localStorage['patterns']);
+		case 'getData':
+			sendResponse({
+				patterns: localStorage['patterns'],
+				looks: localStorage['looks']
+			});
 			break;
 		}
 	}

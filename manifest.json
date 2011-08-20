@@ -1,6 +1,6 @@
 {
   "name": "はてなブックマーク/見たくないリンク",
-  "version": "0.1",
+  "version": "0.2",
   "description": "指定したリンクが、はてなブックマーク (http://b.hatena.ne.jp/) 内に存在する場合、小さく薄く表示します。",
   "background_page": "background.html",
   "options_page" : "options.html",
